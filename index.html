@@ -57,11 +57,28 @@
 
         <div class="m-page m-fengye" data-page-type="info_pic3" data-statics="info_pic3" style="height:70%;">
             <div class="page-con lazy-finish" data-position="50% 50%" data-size="cover" style=" height: 909px;">
+                <table id="reply" class="table">
+                    <tr>
+                        <td> <h1>留言内容</h1></td> <td><h1>回复内容</h1> </td>
+                    </tr>
+                    <tr v-for="mes in message">
+                        <td> <h1>{{ mes.content }}</h1></td> <td><h1>{{ mes.reply }}</h1> </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height:70%;">
+            <div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="padding-top: 5%">
+
                 <div id="img" style="height: 100%">
                     <img class="myCanvas" v-bind:src="imgurl" alt="">
                 </div>
+
             </div>
         </div>
+
         <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height:70%;">
             <div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover">
                 <table class="info table">
@@ -96,21 +113,7 @@
             </div>
         </div>
 
-        <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height:70%;">
-            <div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="padding-top: 5%">
 
-                <table id="reply" class="table">
-                    <tr>
-                        <td> <h1>留言内容</h1></td> <td><h1>回复内容</h1> </td>
-                    </tr>
-                    <tr v-for="mes in message">
-                        <td> <h1>{{ mes.content }}</h1></td> <td><h1>{{ mes.reply }}</h1> </td>
-                    </tr>
-
-                </table>
-
-            </div>
-        </div>
 
 
     </div>
