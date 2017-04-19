@@ -31,6 +31,7 @@ var img = new Vue({
 });
 
 let teacherid  = sessionStorage.getItem("teacherid")
+teacherid = teacherid ? teacherid : '';
 Vue.http.get(config.serverurl + '/getteacher?yibanId=' + teacherid).then((response)=> {
     info.email = response.data.email;
     img.imgurl = response.data.imgurl;
@@ -50,7 +51,8 @@ var leavemsg = new Vue({
     },
     methods:{
         send: function () {
-            var teacherid = sessionStorage.getItem("teacherid");
+            let teacherid = sessionStorage.getItem("teacherid");
+            teacherid = teacherid ? teacherid : '';
             Vue.http.get(config.serverurl + '/createmessage?content=' + this.message + '&teacherYBId=' + teacherid).then((response)=> {
                     if(response.data.code == 1){
                         alert("留言成功");
