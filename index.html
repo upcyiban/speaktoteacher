@@ -4,133 +4,80 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
-    
-    <meta name="apple-touch-fullscreen" content="YES">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
+
     <meta http-equiv="Expires" content="-1">
     <meta http-equiv="pragram" content="no-cache">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/endpic.css">
-    <script type="text/javascript" src="js/offline.js"></script>
-    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
 
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/student.css">
-
-    <style type="text/css">
-        body{
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        .myCanvas {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
 
 
 </head>
 
-<body class="s-bg-ddd pc no-3d" style="-webkit-user-select: none;">
-<section class="u-alert">
-    <div class="alert-loading z-move">
-        <div class="cycleWrap">	<span class="cycle cycle-1"></span>
-            <span class="cycle cycle-2"></span><span class="cycle cycle-3"></span><span class="cycle cycle-4"></span>
-        </div>
-        <div class="lineWrap">	<span class="line line-1"></span><span class="line line-2"></span><span class="line line-3"></span>
-        </div>
+<body>
+
+<table id="reply" class="table" v-cloak>
+    <tr>
+        <td><h1>留言内容</h1></td>
+        <td><h1>回复内容</h1></td>
+    </tr>
+    <tr v-for="mes in message">
+        <td><h1>{{ mes.content }}</h1></td>
+        <td><h1>{{ mes.reply }}</h1></td>
+    </tr>
+
+</table>
+
+
+<div id="img" style="text-align: center" v-cloak>
+    <img class="img-circle" v-bind:src="imgurl" alt="" width="240px" height="240px">
+</div>
+
+
+<table class="info table" v-cloak>
+    <tr>
+        <td><h1>姓名</h1></td>
+        <td><h1>{{ name }}</h1></td>
+    </tr>
+    <tr>
+        <td><h1>电话</h1></td>
+        <td><h1>{{ phonenumber }}</h1></td>
+    </tr>
+
+    <tr>
+        <td><h1>email</h1></td>
+        <td><h1>{{ email }}</h1></td>
+    </tr>
+
+    <tr>
+        <td><h1>座右铭</h1></td>
+        <td><h1>{{ motto }}</h1></td>
+    </tr>
+
+    <tr>
+        <td><h1>个人资料</h1></td>
+        <td><h1>{{ profile }}</h1></td>
+    </tr>
+</table>
+
+
+<div id="msg" v-cloak>
+    <div class="form-group">
+        <label> <h1>留 言</h1></label>
+        <textarea v-model="message" class="form-control" rows="13"></textarea>
     </div>
-</section>
-<section class="u-arrow">
-    <p class="css_sprite01"></p>
-</section>
-<section class="p-ct transformNode-2d" style="height: 907px;">
-    <div class="translate-back" style="height: 907px;">
+    <button v-on:click="send" class="btn btn-primary btn-lg btn-block">留言</button>
+</div>
 
-        <div class="m-page m-fengye" data-page-type="info_pic3" data-statics="info_pic3" style="height:70%;">
-            <div class="page-con lazy-finish" data-position="50% 50%" data-size="cover" style=" height: 909px;">
-                <table id="reply" class="table">
-                    <tr>
-                        <td> <h1>留言内容</h1></td> <td><h1>回复内容</h1> </td>
-                    </tr>
-                    <tr v-for="mes in message">
-                        <td> <h1>{{ mes.content }}</h1></td> <td><h1>{{ mes.reply }}</h1> </td>
-                    </tr>
-
-                </table>
-            </div>
-        </div>
-
-        <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height:70%;">
-            <div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="padding-top: 5%">
-
-                <div id="img" style="height: 100%">
-                    <img class="myCanvas" v-bind:src="imgurl" alt="">
-                </div>
-
-            </div>
-        </div>
-
-        <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height:70%;">
-            <div class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover">
-                <table class="info table">
-                    <tr>
-                        <td> <h1>姓名</h1></td> <td><h1>{{ name }}</h1> </td>
-                    </tr>
-                    <tr>
-                        <td> <h1>电话</h1></td> <td><h1>{{ phonenumber }}</h1> </td>
-                    </tr>
-
-                    <tr>
-                        <td> <h1>email</h1></td> <td><h1>{{ email }}</h1> </td>
-                    </tr>
-
-                    <tr>
-                        <td> <h1>座右铭</h1></td> <td><h1>{{ motto }}</h1> </td>
-                    </tr>
-
-                    <tr>
-                        <td> <h1>个人资料</h1></td> <td><h1>{{ profile }}</h1> </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height:70%;">
-            <div id="msg" class="page-con j-txtWrap lazy-finish" data-position="50% 50%" data-size="cover" style="padding-top: 5%">
-                    <div class="form-group" style="zoom: 200%">
-                        <label>留 言</label>
-                        <textarea v-model="message" class="form-control" rows="13"></textarea>
-                    </div>
-                    <button v-on:click="send" class="btn btn-primary btn-lg btn-block">留言</button>
-            </div>
-        </div>
-
-
-
-
-    </div>
-</section>
-
-
-
-<script src="js/init.mix.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/coffee.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/99_main.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
+
 <script src="./js/config.js"></script>
 <script src="./js/lib.js"></script>
 <script src="./js/student.js"></script>
-
 
 
 </body>
