@@ -52,20 +52,26 @@
     </tr>
 
     <tr>
-        <td>座右铭/td>
+        <td>格言</td>
         <td>{{ motto }}</td>
+    </tr>
+
+    <tr>
+        <td>名师推荐</td>
+        <td>{{ recommend }}</td>
     </tr>
 
     <tr>
         <td>个人资料</td>
         <td>{{ profile }}</td>
     </tr>
+
 </table>
 
 
 <div id="msg" v-cloak>
     <div class="form-group">
-        <label> 留 言</label>
+        <label> 我对导员说 </label>
         <textarea v-model="message" class="form-control" rows="13"></textarea>
     </div>
     <button v-on:click="send" class="btn btn-primary btn-lg btn-block">留言</button>

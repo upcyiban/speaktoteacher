@@ -37,11 +37,12 @@ var info = new Vue({
         email: '',
         motto: '',
         phonenumber: '',
-        profile: ''
+        profile: '',
+        recommend: ''
     },
     methods:{
         change: function () {
-            Vue.http.get(config.serverurl + '/update?profile=' + info.profile + '&motto=' + info.motto + '&phonenumber=' + info.phonenumber + '&email=' + info.email).then((response)=> {
+            Vue.http.get(config.serverurl + '/update?profile=' + info.profile + '&motto=' + info.motto + '&phonenumber=' + info.phonenumber + '&email=' + info.email + '&recommend=' + info.recommend).then((response)=> {
                     if(response.data.code != 1){
                         alert("修改失败，请稍后再试");
                         return ;
@@ -60,6 +61,7 @@ Vue.http.get(config.serverurl + '/getteacher?yibanId=' + teacherid).then((respon
     info.phonenumber = response.data.phonenumber;
     info.profile = response.data.profile;
     info.yibanId = response.data.yibanId;
+    info.recommend = response.data.recommend;
 });
 
 var reply = new Vue({

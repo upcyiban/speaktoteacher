@@ -20,6 +20,7 @@ var info = new Vue({
         name: '',
         phonenumber: '',
         profile: '',
+        recommend: ''
     }
 });
 
@@ -30,7 +31,7 @@ var img = new Vue({
     }
 });
 
-let teacherid  = sessionStorage.getItem("teacherid")
+let teacherid  = sessionStorage.getItem("teacherid");
 teacherid = teacherid ? teacherid : '';
 Vue.http.get(config.serverurl + '/getteacher?yibanId=' + teacherid).then((response)=> {
     info.email = response.data.email;
@@ -40,6 +41,7 @@ Vue.http.get(config.serverurl + '/getteacher?yibanId=' + teacherid).then((respon
     info.name = response.data.name;
     info.phonenumber = response.data.phonenumber;
     info.profile = response.data.profile;
+    info.recommend = response.data.recommend;
 });
 /*
 留言
@@ -70,7 +72,7 @@ var leavemsg = new Vue({
 /*
 回复的消息
  */
-var replymesage = new Vue({
+let replymesage = new Vue({
     el: '#reply',
     data:{
         message: []
