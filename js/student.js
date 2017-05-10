@@ -79,7 +79,7 @@ let replymesage = new Vue({
     }
 });
 
-Vue.http.get(config.serverurl + '/showmessage').then((response)=> {
+Vue.http.get(config.serverurl + '/showmessage?teacherId=' + teacherid).then((response)=> {
     replymesage.message = response.data;
     console.log(replymesage.message)
 });
